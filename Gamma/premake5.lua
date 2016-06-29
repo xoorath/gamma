@@ -11,6 +11,8 @@ project "Gamma"
 
    files { "Src/**.h", "Src/**.cpp" }
 
+   sysincludedirs { "Dependencies/OpenGL" }
+
    filter "configurations:Debug"
       defines { "GAMMA_DEBUG", "DEBUG" }
       flags { "Symbols" }
@@ -29,13 +31,13 @@ project "Gamma"
       defines { "DEV_WINDOWS", "GAME_WINDOWS", "GAME_WINDOWS64", "UNICODE", "WIN32_LEAN_AND_MEAN" }
 
    filter { "configurations:Debug" , "platforms:Game Win32" }
-      links { }
+      links { "Dependencies/OpenGL/Bin/Debug/32/glew32s.lib", "opengl32.lib" }
    filter { "configurations:Release", "platforms:Game Win32" }
-      links { }
+      links { "Dependencies/OpenGL/Bin/Release/32/glew32s.lib", "opengl32.lib" }
    filter { "configurations:Debug", "platforms:Game Win64" }
-      links { }
+      links { "Dependencies/OpenGL/Bin/Debug/64/glew32s.lib", "opengl32.lib" }
    filter { "configurations:Release", "platforms:Game Win64" }
-      links { }
+      links { "Dependencies/OpenGL/Bin/Release/64/glew32s.lib", "opengl32.lib" }
 
    filter "configurations:Debug"
       defines { "DEBUG" }

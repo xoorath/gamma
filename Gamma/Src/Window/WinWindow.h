@@ -3,9 +3,12 @@
 class WinWindow {
     typedef void* HANDLE;
     typedef HANDLE HWND;
+    typedef HANDLE HDC;
+    typedef HANDLE HGLRC;
     typedef void(*TErrorCallback)(const char* ,const char*);
 public:
     void Create();
+    bool InitializeOpenGL();
     void Show();
     bool Update(int& outReturnCode);
 
@@ -18,6 +21,8 @@ private:
     const unsigned MAX_HEIGHT = 0xffff;
 
     HWND m_Hwnd              = 0;
+    HDC m_Hdc                = 0;
+    HGLRC m_Hrc              = 0;
     unsigned m_MaxWidth      = MAX_WIDTH;
     unsigned m_MaxHeight     = MAX_HEIGHT;
     unsigned m_Width         = 1280;
